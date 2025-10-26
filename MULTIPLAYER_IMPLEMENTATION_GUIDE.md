@@ -37,6 +37,7 @@ This guide provides step-by-step instructions for implementing the multiplayer s
 8. Close the temp project (can delete it after)
 
 ### What You Should Have:
+
 - `Content/Characters/Mannequins/` folder with skeletal meshes
 - `SK_Mannequin` skeletal mesh
 - Mannequin animations and Animation Blueprint
@@ -68,6 +69,7 @@ This guide provides step-by-step instructions for implementing the multiplayer s
 
 5. Select **Mesh** (CharacterMesh0) component
 6. In **Details** panel:
+
    - **Skeletal Mesh**: Select `SK_Mannequin` (or your imported mannequin)
    - **Location**: `X=0, Y=0, Z=-90`
    - **Rotation**: `X=0, Y=0, Z=-90`
@@ -76,6 +78,7 @@ This guide provides step-by-step instructions for implementing the multiplayer s
 
 7. Select **CharacterMovement** component
 8. In **Details** panel:
+
    - **Max Walk Speed**: `600.0`
    - **Replication** section:
      - Check **Replicate Movement**
@@ -85,6 +88,7 @@ This guide provides step-by-step instructions for implementing the multiplayer s
 
 11. **Add Component** → **Spring Arm**
 12. Configure Spring Arm:
+
     - **Target Arm Length**: `400.0`
     - **Location**: `X=0, Y=0, Z=90` (shoulder height)
     - **Use Pawn Control Rotation**: ✅ Checked
@@ -216,6 +220,7 @@ We already configured replication in `BP_PlayerCharacter` in Step 2.2.
 8. In **Designer** tab, select `Btn_Host`
 9. In **Details**, scroll to **Events** → Click **+** next to **On Clicked**
 10. In Event Graph, from **OnClicked (Btn_Host)**:
+
     - Add **Get Game Instance** node
     - Cast to `BP_MultiplayerGameInstance`
     - Call a custom function **CreateSession** (we'll create this next)
@@ -233,6 +238,7 @@ We already configured replication in `BP_PlayerCharacter` in Step 2.2.
 **CreateSession Function:**
 
 16. In the function graph:
+
     - Add **Create Session** node
     - **Public Connections**: `1` (LAN connections)
     - **Number of Public Connections**: `4`
@@ -240,6 +246,7 @@ We already configured replication in `BP_PlayerCharacter` in Step 2.2.
     - **Session Name**: `GameSession`
 
 17. From **Create Session** Success pin:
+
     - Add **Open Level** node
     - **Level Name**: `MAP_Multiplayer` (we'll create this)
     - **Options**: `?listen` (makes this a listen server)
@@ -249,11 +256,13 @@ We already configured replication in `BP_PlayerCharacter` in Step 2.2.
 **FindSessions Function:**
 
 19. In the function graph:
+
     - Add **Find Sessions** node
     - **Max Results**: `20`
     - **Use LAN**: ✅ Checked
 
 20. From **Results** pin:
+
     - Add **ForEachLoop**
     - Print session names (for debugging)
     - Later, we'll populate a UI list
@@ -264,6 +273,7 @@ We already configured replication in `BP_PlayerCharacter` in Step 2.2.
 **JoinSession Function:**
 
 22. In the function graph:
+
     - Add **Join Session** node
     - Connect **Session Result** parameter to it
 
@@ -325,6 +335,7 @@ We already configured replication in `BP_PlayerCharacter` in Step 2.2.
 
 5. Open **Level Blueprint** (**Blueprints** → **Open Level Blueprint**)
 6. From **Event BeginPlay**:
+
    - Add **Create Widget** node
    - **Class**: Select `WBP_MainMenu`
    - From **Return Value**, add **Add to Viewport**
@@ -357,6 +368,7 @@ We already configured replication in `BP_PlayerCharacter` in Step 2.2.
 
 5. Still in **Project Settings** → **Maps & Modes**
 6. **Default Maps** section:
+
    - **Editor Startup Map**: `MAP_Multiplayer`
    - **Game Default Map**: `MAP_MainMenu`
    - **Transition Map**: None
@@ -372,6 +384,7 @@ We already configured replication in `BP_PlayerCharacter` in Step 2.2.
 **Add Axis Mappings:**
 
 3. Expand **Axis Mappings** → Click **+** to add:
+
    - **MoveForward**:
      - **W** key: Scale `1.0`
      - **S** key: Scale `-1.0`
@@ -388,6 +401,7 @@ We already configured replication in `BP_PlayerCharacter` in Step 2.2.
      - **Gamepad Right Thumbstick Y-Axis**: Scale `1.0`
 
 4. **Add Action Mappings** (for jump, etc.):
+
    - **Jump**:
      - **Space Bar**
      - **Gamepad Face Button Bottom** (A/X)
@@ -413,6 +427,7 @@ We already configured replication in `BP_PlayerCharacter` in Step 2.2.
 **Configure PIE Settings:**
 
 4. In **Play In Editor** settings:
+
    - **Number of Players**: `2`
    - **Net Mode**: **Play As Listen Server**
    - **Run Under One Process**: ✅ Checked
@@ -421,12 +436,14 @@ We already configured replication in `BP_PlayerCharacter` in Step 2.2.
 5. Click **Play** (or press **Alt+P**)
 
 **Expected Result:**
+
 - You should see 2 viewports (split screen)
 - Each viewport shows a different mannequin character
 - Both characters can move independently
 - Both cameras follow their respective characters
 
 **Troubleshooting:**
+
 - If only 1 player spawns: Check `BP_MultiplayerGameInstance` has **Create Player** node
 - If no split: Verify **Number of Players** = 2 in PIE settings
 - If characters don't move: Check Input Mappings and Character Blueprint input setup
@@ -437,6 +454,7 @@ We already configured replication in `BP_PlayerCharacter` in Step 2.2.
 
 1. **Play** dropdown → **Advanced Settings**
 2. Set:
+
    - **Number of Players**: `1`
    - **Net Mode**: **Play As Listen Server**
    - **Editor Multiplayer Mode**: Check **Run Dedicated Server**
@@ -454,11 +472,13 @@ We already configured replication in `BP_PlayerCharacter` in Step 2.2.
    - Window 2: Join via Main Menu (use IP `127.0.0.1`)
 
 **Expected Result:**
+
 - Player from one instance appears in the other instance's game
 - Characters move and replicate between instances
 - Both players can see each other
 
 **Troubleshooting:**
+
 - If connection fails: Check **Online Subsystem** is configured (already done in config)
 - If player doesn't spawn: Verify **Player Start** actors in level
 - If character doesn't replicate: Check **Replicates** = true in `BP_PlayerCharacter`
@@ -519,4 +539,3 @@ We already configured replication in `BP_PlayerCharacter` in Step 2.2.
 - Deploy to Epic Online Services for internet play
 
 **Your multiplayer foundation is now complete!**
-
