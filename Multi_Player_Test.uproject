@@ -19,15 +19,27 @@
 			]
 		},
 		{
-			"Name": "OnlineSubsystem",
+			"Name": "RemoteControl",
 			"Enabled": true
 		},
 		{
-			"Name": "OnlineSubsystemNull",
+			"Name": "RemoteControlComponents",
 			"Enabled": true
 		},
 		{
-			"Name": "OnlineSubsystemUtils",
+			"Name": "RemoteControlProtocolDMX",
+			"Enabled": true
+		},
+		{
+			"Name": "RemoteControlProtocolOSC",
+			"Enabled": true
+		},
+		{
+			"Name": "RemoteControlProtocolMIDI",
+			"Enabled": true
+		},
+		{
+			"Name": "GameplayBehaviors",
 			"Enabled": true
 		}
 	]

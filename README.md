@@ -13,6 +13,7 @@ A multiplayer game project for Unreal Engine 5.6 with C++ and Blueprint support,
 ## Quick Start
 
 ### Prerequisites
+
 - Unreal Engine 5.6
 - Visual Studio 2022 (for C++ compilation)
 - Epic Games Launcher (for mannequin assets)
@@ -20,16 +21,19 @@ A multiplayer game project for Unreal Engine 5.6 with C++ and Blueprint support,
 ### Setup Instructions
 
 1. **Clone the Repository**
+
    ```bash
    git clone https://github.com/antoine1anthony/Multi_Player_Test.git
    cd Multi_Player_Test
    ```
 
 2. **Generate Project Files**
+
    - Right-click `Multi_Player_Test.uproject`
    - Select "Generate Visual Studio project files"
 
 3. **Build the Project**
+
    - Open `Multi_Player_Test.sln` in Visual Studio
    - Set build configuration to **Development Editor** | **Win64**
    - Build the solution (F7)
@@ -89,6 +93,7 @@ The multiplayer system is implemented in phases:
 ## Key Components
 
 ### Blueprints (to be created in Unreal Editor)
+
 - `BP_MultiplayerGameMode` - Manages game rules and player spawning
 - `BP_PlayerCharacter` - Third-person character with mannequin mesh
 - `BP_MultiplayerController` - Handles player input
@@ -96,17 +101,20 @@ The multiplayer system is implemented in phases:
 - `WBP_MainMenu` - Main menu UI with Host/Join buttons
 
 ### Levels (to be created in Unreal Editor)
+
 - `MAP_MainMenu` - Main menu level with UI
 - `MAP_Multiplayer` - Main gameplay level with Player Start points
 
 ## Configuration
 
 ### Enabled Plugins
+
 - **OnlineSubsystem** - Core multiplayer networking
 - **OnlineSubsystemNull** - LAN/local multiplayer testing
 - **OnlineSubsystemUtils** - Utility functions for online features
 
 ### Network Settings
+
 - Default Platform Service: Null (for LAN testing)
 - Net Server Max Tick Rate: 60
 - Max Net Tick Rate: 60
@@ -114,12 +122,14 @@ The multiplayer system is implemented in phases:
 ## Testing Multiplayer
 
 ### Split-Screen Local Co-op
+
 1. Play → Advanced Settings
 2. Set "Number of Players" to 2
 3. Set "Net Mode" to "Play As Listen Server"
 4. Click Play
 
 ### Online Multiplayer
+
 1. Launch 2 editor instances
 2. Instance 1: Click Play (Host)
 3. Instance 2: Console command: `open 127.0.0.1`
@@ -127,16 +137,20 @@ The multiplayer system is implemented in phases:
 ## Troubleshooting
 
 ### Build Errors After Adding C++
+
 If you encounter build errors:
+
 1. Delete `Binaries/`, `Intermediate/`, and `Saved/` folders
 2. Right-click `.uproject` → Generate Visual Studio project files
 3. Rebuild in Visual Studio
 
 ### Mannequin Assets Not Found
+
 - Add Third Person content from Epic Games Launcher
 - Or create a Third Person template project and migrate assets
 
 ### Split-Screen Not Working
+
 - Verify `BP_MultiplayerGameInstance` has "Create Player" node
 - Check PIE settings: "Number of Players" = 2
 - Ensure Game Instance Class is set in Project Settings
@@ -144,6 +158,7 @@ If you encounter build errors:
 ## Next Steps
 
 After completing the implementation guide:
+
 - Add gameplay mechanics (objectives, scoring, etc.)
 - Create additional characters or character customization
 - Implement voice chat or text chat
@@ -172,4 +187,3 @@ antoine1anthony
 ---
 
 **Ready to build multiplayer games? Follow the `MULTIPLAYER_IMPLEMENTATION_GUIDE.md` to get started!**
-

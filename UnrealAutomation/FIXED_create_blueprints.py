@@ -50,7 +50,7 @@ character_bp = asset_tools.create_asset(
 
 if character_bp:
     print("✓ BP_PlayerCharacter created")
-    
+
     # Set replication
     bp_class = character_bp.generated_class()
     if bp_class:
@@ -58,7 +58,7 @@ if character_bp:
         default_obj.set_editor_property("b_replicates", True)
         default_obj.set_editor_property("b_replicate_movement", True)
         print("  ✓ Replication enabled")
-    
+
     editor_asset_lib.save_asset("/Game/Blueprints/BP_PlayerCharacter")
 else:
     print("✗ Failed to create BP_PlayerCharacter")
@@ -103,4 +103,3 @@ print("\n" + "=" * 60)
 print("BLUEPRINT CREATION COMPLETE!")
 print("=" * 60)
 print("\nCheck Content/Blueprints folder in Content Browser")
-
