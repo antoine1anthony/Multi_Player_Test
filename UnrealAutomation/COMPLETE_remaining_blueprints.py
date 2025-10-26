@@ -22,14 +22,14 @@ if not editor_asset_lib.does_asset_exist("/Game/Blueprints/BP_PlayerCharacter"):
     print("Creating BP_PlayerCharacter...")
     factory = unreal.BlueprintFactory()
     factory.set_editor_property("parent_class", unreal.Character)
-    
+
     character_bp = asset_tools.create_asset(
         "BP_PlayerCharacter",
         "/Game/Blueprints",
         unreal.Blueprint,
         factory
     )
-    
+
     if character_bp:
         bp_class = character_bp.generated_class()
         if bp_class:
@@ -46,21 +46,22 @@ print("\n--- Creating BP_MultiplayerController ---")
 if not editor_asset_lib.does_asset_exist("/Game/Blueprints/BP_MultiplayerController"):
     factory = unreal.BlueprintFactory()
     factory.set_editor_property("parent_class", unreal.PlayerController)
-    
+
     controller_bp = asset_tools.create_asset(
         "BP_MultiplayerController",
         "/Game/Blueprints",
         unreal.Blueprint,
         factory
     )
-    
+
     if controller_bp:
         bp_class = controller_bp.generated_class()
         if bp_class:
             default_obj = unreal.get_default_object(bp_class)
             default_obj.set_editor_property("b_show_mouse_cursor", False)
         print("✓ BP_MultiplayerController created")
-        editor_asset_lib.save_asset("/Game/Blueprints/BP_MultiplayerController")
+        editor_asset_lib.save_asset(
+            "/Game/Blueprints/BP_MultiplayerController")
 else:
     print("✓ BP_MultiplayerController already exists")
 
@@ -69,17 +70,18 @@ print("\n--- Creating BP_MultiplayerGameInstance ---")
 if not editor_asset_lib.does_asset_exist("/Game/Blueprints/BP_MultiplayerGameInstance"):
     factory = unreal.BlueprintFactory()
     factory.set_editor_property("parent_class", unreal.GameInstance)
-    
+
     gameinstance_bp = asset_tools.create_asset(
         "BP_MultiplayerGameInstance",
         "/Game/Blueprints",
         unreal.Blueprint,
         factory
     )
-    
+
     if gameinstance_bp:
         print("✓ BP_MultiplayerGameInstance created")
-        editor_asset_lib.save_asset("/Game/Blueprints/BP_MultiplayerGameInstance")
+        editor_asset_lib.save_asset(
+            "/Game/Blueprints/BP_MultiplayerGameInstance")
 else:
     print("✓ BP_MultiplayerGameInstance already exists")
 

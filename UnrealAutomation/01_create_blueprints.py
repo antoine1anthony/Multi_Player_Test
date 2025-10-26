@@ -44,23 +44,23 @@ if not editor_asset_lib.does_asset_exist(GAMEMODE_BP_PATH):
     # Create a Blueprint based on GameModeBase
     gamemode_factory = unreal.BlueprintFactory()
     gamemode_factory.set_editor_property("parent_class", unreal.GameModeBase)
-    
+
     gamemode_bp = asset_tools.create_asset(
         asset_name="BP_MultiplayerGameMode",
         package_path=BLUEPRINTS_PATH,
         asset_class=unreal.Blueprint,
         factory=gamemode_factory
     )
-    
+
     if gamemode_bp:
         print(f"✓ Created: {GAMEMODE_BP_PATH}")
-        
+
         # Get the Blueprint's generated class
         bp_generated_class = gamemode_bp.generated_class()
         if bp_generated_class:
             # Get the default object to set properties
             default_obj = unreal.get_default_object(bp_generated_class)
-            
+
             # Note: Some properties can only be set in Blueprint editor
             # We'll document what needs manual configuration
             print("  → GameMode created successfully")
@@ -81,30 +81,32 @@ if not editor_asset_lib.does_asset_exist(CHARACTER_BP_PATH):
     # Create a Blueprint based on Character
     character_factory = unreal.BlueprintFactory()
     character_factory.set_editor_property("parent_class", unreal.Character)
-    
+
     character_bp = asset_tools.create_asset(
         asset_name="BP_PlayerCharacter",
         package_path=BLUEPRINTS_PATH,
         asset_class=unreal.Blueprint,
         factory=character_factory
     )
-    
+
     if character_bp:
         print(f"✓ Created: {CHARACTER_BP_PATH}")
-        
+
         # Get the Blueprint's generated class
         bp_generated_class = character_bp.generated_class()
         if bp_generated_class:
             default_obj = unreal.get_default_object(bp_generated_class)
-            
+
             # Set replication properties (critical for multiplayer)
             default_obj.set_editor_property("bReplicates", True)
             default_obj.set_editor_property("bReplicateMovement", True)
-            
+
             # Set Auto Possess to Disabled (important for multiplayer)
-            default_obj.set_editor_property("auto_possess_player", unreal.AutoPossessPlayer.DISABLED)
-            default_obj.set_editor_property("auto_possess_ai", unreal.AutoPossessAI.DISABLED)
-            
+            default_obj.set_editor_property(
+                "auto_possess_player", unreal.AutoPossessPlayer.DISABLED)
+            default_obj.set_editor_property(
+                "auto_possess_ai", unreal.AutoPossessAI.DISABLED)
+
             print("  → Replication enabled: bReplicates = True")
             print("  → Movement replication enabled")
             print("  → Auto Possess set to Disabled")
@@ -125,25 +127,26 @@ print("-" * 60)
 if not editor_asset_lib.does_asset_exist(CONTROLLER_BP_PATH):
     # Create a Blueprint based on PlayerController
     controller_factory = unreal.BlueprintFactory()
-    controller_factory.set_editor_property("parent_class", unreal.PlayerController)
-    
+    controller_factory.set_editor_property(
+        "parent_class", unreal.PlayerController)
+
     controller_bp = asset_tools.create_asset(
         asset_name="BP_MultiplayerController",
         package_path=BLUEPRINTS_PATH,
         asset_class=unreal.Blueprint,
         factory=controller_factory
     )
-    
+
     if controller_bp:
         print(f"✓ Created: {CONTROLLER_BP_PATH}")
-        
+
         bp_generated_class = controller_bp.generated_class()
         if bp_generated_class:
             default_obj = unreal.get_default_object(bp_generated_class)
-            
+
             # Set mouse cursor to hidden (for third-person gameplay)
             default_obj.set_editor_property("bShow_mouse_cursor", False)
-            
+
             print("  → Mouse cursor set to hidden")
             print("  → Controller ready for use")
     else:
@@ -161,15 +164,16 @@ print("-" * 60)
 if not editor_asset_lib.does_asset_exist(GAMEINSTANCE_BP_PATH):
     # Create a Blueprint based on GameInstance
     gameinstance_factory = unreal.BlueprintFactory()
-    gameinstance_factory.set_editor_property("parent_class", unreal.GameInstance)
-    
+    gameinstance_factory.set_editor_property(
+        "parent_class", unreal.GameInstance)
+
     gameinstance_bp = asset_tools.create_asset(
         asset_name="BP_MultiplayerGameInstance",
         package_path=BLUEPRINTS_PATH,
         asset_class=unreal.Blueprint,
         factory=gameinstance_factory
     )
-    
+
     if gameinstance_bp:
         print(f"✓ Created: {GAMEINSTANCE_BP_PATH}")
         print("  → Manual config needed: Add Event Init with Create Player node")
@@ -215,4 +219,3 @@ print("   - Set Default GameMode to BP_MultiplayerGameMode")
 print("\n" + "=" * 60)
 print("Refer to BLUEPRINT_CREATION_CHECKLIST.md for detailed steps!")
 print("=" * 60)
-
