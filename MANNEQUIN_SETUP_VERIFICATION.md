@@ -5,15 +5,19 @@
 The following configurations were automatically applied to your **BP_PlayerCharacter** via MCP:
 
 ### 1. **Skeletal Mesh Assignment**
+
 Attempted to set mesh to:
+
 - Primary: `/Game/Characters/Mannequins/Meshes/SKM_Manny` (male mannequin)
 - Fallback: `/Game/Characters/Mannequins/Meshes/SKM_Quinn_Simple` (if available)
 
 ### 2. **Mesh Transform**
+
 - **Location**: (X=0, Y=0, Z=-90)
 - **Rotation**: (Pitch=0, Yaw=-90, Roll=0)
 
 ### 3. **Animation Blueprint**
+
 - **AnimClass**: `/Game/Characters/Mannequins/Animations/ABP_Manny`
 
 ---
@@ -21,6 +25,7 @@ Attempted to set mesh to:
 ## 🔍 **How to Verify in Unreal Editor**
 
 ### Step 1: Check BP_PlayerCharacter
+
 1. Open **Content Browser**
 2. Navigate to **Content/Blueprints/**
 3. Double-click **BP_PlayerCharacter** to open it
@@ -32,6 +37,7 @@ Attempted to set mesh to:
    - **Rotation**: Should be (0, -90, 0)
 
 ### Step 2: Visual Preview
+
 - In the BP_PlayerCharacter editor, look at the **Viewport** (center)
 - You should see:
   - ✅ A blue/gray humanoid mannequin mesh
@@ -39,7 +45,9 @@ Attempted to set mesh to:
   - ✅ The mannequin properly oriented (facing forward)
 
 ### Step 3: Check Content Browser for Third Person Assets
+
 Navigate to **Content Browser** and look for these folders:
+
 - `Content/Characters/` or `Content/ThirdPerson/`
 - Inside, you should see:
   - **Meshes/** folder with SKM_Manny, SKM_Quinn, etc.
@@ -78,11 +86,13 @@ If you prefer the female mannequin:
 Depending on which content pack you added, assets might be at:
 
 ### UE5 Third Person Template:
+
 - **Meshes**: `/Game/Characters/Mannequins/Meshes/`
 - **Animations**: `/Game/Characters/Mannequins/Animations/`
 - **Materials**: `/Game/Characters/Mannequins/Materials/`
 
 ### Alternative Paths:
+
 - `/Game/ThirdPerson/Meshes/`
 - `/Game/Content/Mannequin/`
 
@@ -91,6 +101,7 @@ Depending on which content pack you added, assets might be at:
 ## ✅ **Success Criteria**
 
 You'll know it worked when:
+
 - ✅ BP_PlayerCharacter shows a visible mannequin in the viewport
 - ✅ The character is standing upright (not lying down)
 - ✅ Compiling the Blueprint shows no errors
@@ -101,16 +112,21 @@ You'll know it worked when:
 ## 🚨 **Troubleshooting**
 
 ### Problem: No mannequin visible in Blueprint viewport
+
 **Solution**: Manually assign skeletal mesh from dropdown
 
 ### Problem: Character is lying down/rotated wrong
+
 **Solution**: Set Mesh Rotation Yaw to -90 degrees
 
 ### Problem: Character not animating in-game
+
 **Solution**: Assign Animation Blueprint (ABP_Manny/Quinn) to Anim Class
 
 ### Problem: Can't find mannequin assets
-**Solution**: 
+
+**Solution**:
+
 - Check if content pack actually installed (look in Content Browser)
 - Try adding content pack again via **Content Browser → Add → Add Feature or Content Pack**
 - Alternative: Use migration method from a temporary Third Person project
@@ -120,12 +136,12 @@ You'll know it worked when:
 ## 📸 **What You Should See**
 
 After successful setup:
+
 - **Blueprint Viewport**: Blue/gray humanoid mannequin with camera boom
 - **Details Panel**: Skeletal mesh assigned, animation blueprint assigned
 - **In-Game (PIE)**: Animated character that responds to WASD input
 
 ---
 
-*Last Updated: 2025-10-26*
-*Automated via Unreal MCP Server*
-
+_Last Updated: 2025-10-26_
+_Automated via Unreal MCP Server_
