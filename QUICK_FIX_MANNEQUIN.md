@@ -42,6 +42,7 @@ Since the MCP auto-configuration needs verification, follow these simple steps:
 Still in the **Details** panel, scroll down to **Transform**:
 
 1. **Location**:
+
    - X: `0`
    - Y: `0`
    - Z: `-90` (moves character down into the capsule)
@@ -91,16 +92,19 @@ You should now see a visible, animated character! 🎉
 If the dropdowns are empty or you can't find "Manny":
 
 ### Option A: Verify Content Pack Installed
+
 1. **Content Browser** → Look for `Content/Characters/Mannequins/` folder
 2. If missing, the content pack didn't install properly
 
 ### Option B: Re-add Content Pack
+
 1. **Content Browser** → Click **Add** button (green plus)
 2. Select **Add Feature or Content Pack**
 3. Find **Third Person** or **Character Content**
 4. Click **Add to Project**
 
 ### Option C: Check Example Character
+
 1. Navigate to **Content → ThirdPerson → Blueprints**
 2. Open **BP_ThirdPersonCharacter** (this is the example)
 3. Select **Mesh** component
@@ -112,11 +116,13 @@ If the dropdowns are empty or you can't find "Manny":
 ## 📸 **What Success Looks Like**
 
 **In Blueprint Editor Viewport:**
+
 - Blue/gray humanoid character visible
 - Character standing upright in the capsule
 - Camera boom (spring arm) visible above character
 
 **In-Game (when you hit Play):**
+
 - You spawn as a visible character (not invisible)
 - Character animates when walking
 - Camera follows behind character
@@ -125,16 +131,15 @@ If the dropdowns are empty or you can't find "Manny":
 
 ## ⚡ **Quick Troubleshooting**
 
-| Problem | Solution |
-|---------|----------|
-| Character is lying down | Set Rotation Yaw to -90 |
-| Character is floating | Set Location Z to -90 |
-| No animation | Set Anim Class to ABP_Unarmed |
-| Can't find assets | Re-add Third Person content pack |
+| Problem                        | Solution                                |
+| ------------------------------ | --------------------------------------- |
+| Character is lying down        | Set Rotation Yaw to -90                 |
+| Character is floating          | Set Location Z to -90                   |
+| No animation                   | Set Anim Class to ABP_Unarmed           |
+| Can't find assets              | Re-add Third Person content pack        |
 | Character is invisible in-game | Check that Mesh is set under Components |
 
 ---
 
-*This should take less than 5 minutes total!*
-*If you get stuck, send a screenshot of your Blueprint Editor and I'll help diagnose.*
-
+_This should take less than 5 minutes total!_
+_If you get stuck, send a screenshot of your Blueprint Editor and I'll help diagnose._
